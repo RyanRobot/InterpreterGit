@@ -1,0 +1,92 @@
+
+public class InvCount {
+	public static class ListAndInversions {
+		public int inversions;
+		public int[] list;
+		public ListAndInversions(int i, int[] l)
+		{
+			this.inversions = i;
+			this.list = l;
+		}
+	}
+
+	public static void main(String[] args) {
+		int[] data = {1};
+		int total = CountInv(data);
+		System.out.println(total);
+	}
+	
+	public static int CountInv(int[] A)
+	{
+		if(A.length <= 1)
+		{
+			return 0;
+		}
+		else
+		{
+			int[] B = new int[A.length/2];
+			for(int i = 0; i < B.length; i++)
+			{
+				B[i] = A[i];
+			}
+			int[] C = new int[A.length - B.length];
+			for(int i = 0; i < A.length - B.length; i++)
+			{
+				C[i] = A[i + B.length];
+			}
+			int leftInv = CountInv(B);
+			int rightInv = CountInv(C);
+			int splitInv = CountSplitInv(B, C);
+			return leftInv + rightInv + splitInv;
+		}
+	}
+	
+	public static int CountSplitInv(int[] B, int[] C)
+	{
+		// i and j should be initialized to 0 for the first index, not 1
+		int i = 0;
+		int j = 0;
+		int splitInv = 0;
+		for(int k = 1; k <= B.length + C.length; k++)
+		{
+			if(i < B.length && B[i] < C[j])
+			{
+				i++;
+			}
+			else
+			{
+				j++;
+				// Assume [4,5,6], [1,2,3]
+				// SplitInv should increase by 3 because 3 switches need to happen
+				// i = 0, C.length = 3, SplitInv = 3 - i
+				
+				splitInv += (C.length - i);
+			}
+		}
+		return splitInv;
+	}
+
+	public static ListAndInversions CountAndMergeInversions(int[] C, int D[])
+	{
+		int i = 0;
+		int j = 0;
+		int splitInv = 0;
+		int[] B = new int[C.length + D.length];
+		for(int k = 1; k <= C.length + D.length; k++)
+		{
+			if(i < C.length && C[i] < D[j])
+			{
+				B[k] = C[i];
+				i++;
+			}
+			else
+			{
+				B[k] = D[j];
+				j++;
+				splitInv += (C.length - i);
+			}
+		}
+		ListAndInversions rvalue = new ListAndInversions(splitInv, B);
+		return rvalue;
+	}
+}

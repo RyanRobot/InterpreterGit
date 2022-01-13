@@ -1,0 +1,23 @@
+
+public class InvCount {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+	public static int countInversions(int[] C, int D[])
+	{
+		int i = 1;
+		int j = 1;
+		int splitInv = 0;
+		int[] B = new int[C.length + D.length];
+		for(int k = 1; k <= C.length + D.length; k++)
+		{
+			if(C[i] < D[j])
+			{
+				
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+Index	|	Symbols			|	Kind	|	Type	|	Value
+--------|-------------------------------|---------------|---------------|------------
+1	|	TestInt			|	V	|	i	|	27
+2	|	TestDouble		|	V	|	d	|	42.25
+3	|	TestString		|	V	|	s	|	These are the times...
+4	|	135			|	C	|	i	|	135
+5	|	3.1415			|	C	|	d	|	3.1415
+6	|	Please Enter A Value	|	C	|	s	|	Please Enter A Value
