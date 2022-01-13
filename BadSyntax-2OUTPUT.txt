@@ -1,0 +1,173 @@
+Ryan Johnson
+7071
+CS 4100, Fall 2021
+Compiler IDE used: Eclipse Neon
+0001 
+0002 module BadProg2;
+	MODL | 	0015 | 	module
+--> Entering Program
+	IDNT | 	0050 | 	BadProg2
+	SEMI | 	0036 | 	;
+0003 
+0004 (* This Part A test file should has one syntax error after the lexical truncation... should continue! *)
+0005 
+0006 begin
+	BGIN | 	0011 | 	begin
+ --> Entering Block
+0007 { The only statements for Part A are ASSIGNMENTS with EXPRESSIONS - long number below }
+0008 
+0009 sum:=(27.1234567890123456 *first)+ 3.14*radius*radius; (* A long number; syntax flags it and keeps going. *)
+	IDNT | 	0050 | 	sum
+  --> Entering Statement
+   --> Entering handleAssignment
+    --> Entering Variable
+    <-- Exiting Variable
+	ASGN | 	0037 | 	:=
+	LPAR | 	0034 | 	(
+    --> Entering SimpleExpression
+     --> Entering Term
+      --> Entering Factor
+Float length > 12, truncated 27.1234567890123456 to 27.123456789
+	FCNS | 	0052 | 	27.1234567890123456
+       --> Entering SimpleExpression
+        --> Entering Term
+         --> Entering Factor
+	MULT | 	0031 | 	*
+         <-- Exiting Factor
+	IDNT | 	0050 | 	first
+         --> Entering Term
+          --> Entering Factor
+	RPAR | 	0035 | 	)
+          <-- Exiting Factor
+         <-- Exiting Term
+        <-- Exiting Term
+       <-- Exiting SimpleExpression
+	PLUS | 	0032 | 	+
+      <-- Exiting Factor
+     <-- Exiting Term
+	FCNS | 	0052 | 	3.14
+     --> Entering SimpleExpression
+      --> Entering Term
+       --> Entering Factor
+	MULT | 	0031 | 	*
+       <-- Exiting Factor
+	IDNT | 	0050 | 	radius
+       --> Entering Term
+        --> Entering Factor
+	MULT | 	0031 | 	*
+        <-- Exiting Factor
+	IDNT | 	0050 | 	radius
+        --> Entering Term
+         --> Entering Factor
+	SEMI | 	0036 | 	;
+         <-- Exiting Factor
+        <-- Exiting Term
+       <-- Exiting Term
+      <-- Exiting Term
+     <-- Exiting SimpleExpression
+    <-- Exiting SimpleExpression
+   <-- Exiting handleAssignment
+  <-- Exiting Statement
+0010                                   
+0011 a :=(a+c)* (b-d)                ;
+	IDNT | 	0050 | 	a
+  --> Entering Statement
+   --> Entering handleAssignment
+    --> Entering Variable
+    <-- Exiting Variable
+	ASGN | 	0037 | 	:=
+	LPAR | 	0034 | 	(
+    --> Entering SimpleExpression
+     --> Entering Term
+      --> Entering Factor
+	IDNT | 	0050 | 	a
+       --> Entering SimpleExpression
+        --> Entering Term
+         --> Entering Factor
+	PLUS | 	0032 | 	+
+         <-- Exiting Factor
+        <-- Exiting Term
+	IDNT | 	0050 | 	c
+        --> Entering SimpleExpression
+         --> Entering Term
+          --> Entering Factor
+	RPAR | 	0035 | 	)
+          <-- Exiting Factor
+         <-- Exiting Term
+        <-- Exiting SimpleExpression
+       <-- Exiting SimpleExpression
+	MULT | 	0031 | 	*
+      <-- Exiting Factor
+	LPAR | 	0034 | 	(
+      --> Entering Term
+       --> Entering Factor
+	IDNT | 	0050 | 	b
+        --> Entering SimpleExpression
+         --> Entering Term
+          --> Entering Factor
+	MINS | 	0033 | 	-
+          <-- Exiting Factor
+         <-- Exiting Term
+	IDNT | 	0050 | 	d
+         --> Entering SimpleExpression
+          --> Entering Term
+           --> Entering Factor
+	RPAR | 	0035 | 	)
+           <-- Exiting Factor
+          <-- Exiting Term
+         <-- Exiting SimpleExpression
+        <-- Exiting SimpleExpression
+	SEMI | 	0036 | 	;
+       <-- Exiting Factor
+      <-- Exiting Term
+     <-- Exiting Term
+    <-- Exiting SimpleExpression
+   <-- Exiting handleAssignment
+  <-- Exiting Statement
+0012 (* There is a double ** error below *)
+0013 quad1 := -b +(b**b) - 4 * a* c / 2*a;
+	IDNT | 	0050 | 	quad1
+  --> Entering Statement
+   --> Entering handleAssignment
+    --> Entering Variable
+    <-- Exiting Variable
+	ASGN | 	0037 | 	:=
+	MINS | 	0033 | 	-
+    --> Entering SimpleExpression
+     --> Entering Term
+      --> Entering Factor
+	IDNT | 	0050 | 	b
+	PLUS | 	0032 | 	+
+      <-- Exiting Factor
+     <-- Exiting Term
+	LPAR | 	0034 | 	(
+     --> Entering SimpleExpression
+      --> Entering Term
+       --> Entering Factor
+	IDNT | 	0050 | 	b
+        --> Entering SimpleExpression
+         --> Entering Term
+          --> Entering Factor
+	MULT | 	0031 | 	*
+          <-- Exiting Factor
+	MULT | 	0031 | 	*
+          --> Entering Term
+           --> Entering Factor
+ERROR: Expected Integer but found *
+           <-- Exiting Factor
+	IDNT | 	0050 | 	b
+          <-- Exiting Term
+         <-- Exiting Term
+        <-- Exiting SimpleExpression
+ERROR: Expected ) but found b
+       <-- Exiting Factor
+      <-- Exiting Term
+     <-- Exiting SimpleExpression
+    <-- Exiting SimpleExpression
+   <-- Exiting handleAssignment
+  <-- Exiting Statement
+ERROR: Expected END but found b
+ <-- Exiting Block
+ERROR: Expected . but found b
+<-- Exiting Program
+Done.

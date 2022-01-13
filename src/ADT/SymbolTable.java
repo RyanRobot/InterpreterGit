@@ -31,6 +31,7 @@ public class SymbolTable {
 		valuesDoubles = new double[size];
 		valuesStrings = new String[size];
 		dataTypes = new char[size];
+		AddSymbol("0",'c', 0);
 	}
 	
 	// AddSymbol overloaded function

@@ -345,7 +345,6 @@ public class Interpreter
 				break;
 			// branch positive
 			case "BP":
-				System.out.println("Here!");
 				if(S.GetInteger(op1) > 0)
 				{
 					PC = S.GetInteger(op3) - 1;
